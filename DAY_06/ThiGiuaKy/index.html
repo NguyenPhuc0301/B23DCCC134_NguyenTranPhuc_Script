@@ -1,0 +1,33 @@
+/
+Mã Sinh Viên : B23DCCC134
+Họ Và Tên : Nguyễn Trần Phúc
+Đề 2
+/
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đồng hồ báo thức</title>
+    <link rel = "stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+
+        <div class ="clock">
+            <div class="display">
+                <input id="minutes" type="number" min="0" placeholder="Phút">
+                <input id="seconds" type="number" min="0" max="59" placeholder="Giây">
+                <span id="minutes">00</span>:<span id="seconds">00</span>
+            </div>
+            <div class="buttons">
+                <button id="startButton">START</button>
+                <button id="resetButton">RESET</button>
+            </div>
+        </div>
+    </div>
+    <audio id="alarmSound" src="what-you-want-phonk-soundtrack-171335.mp3" loop></audio>
+    <script src="main.js"></script>
+</body>
+</html>

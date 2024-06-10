@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(215, 250, 227);
+    display: flex;
+    justify-content:center;
+    height: 100;
+    margin: 0;
+}
+.container{
+    text-align: center;
+}
+.clock {
+    background-color: aliceblue;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(red, green, blue, alpha);
+    padding: 20px;
+    width: 200px;
+}
+.display input{
+   padding: 5px;
+   width: 50px;
+   margin: 5px;
+   text-align: center;
+}
+.buttons button {
+    padding: 8px 20px;
+    font-size: 16px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+#startButton {
+    background-color: rgb(42, 165, 44);
+    color: aliceblue;
+    border: none;
+}
+#resetButton {
+    background-color: brown;
+    color: aliceblue;
+    border: none;
+}
+#startButton:hover, #resetButton:hover {
+    opacity: 0.8;
+}
