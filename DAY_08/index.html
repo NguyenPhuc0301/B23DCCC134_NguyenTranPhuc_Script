@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quản Lý Người Dùng</title>
+</head>
+<body>
+<h1>Quản Lý Người Dùng</h1>
+<form id="addUserForm">
+    <h2>Thêm Người Dùng Mới</h2>
+    <label for="name">Họ và Tên:</label><br>
+    <input type="text" id="addName" name="name" required><br>
+    <label for="email">Email:</label><br>
+    <input type="email" id="addEmail" name="email" required><br>
+    <label for="phone">Số Điện Thoại:</label><br>
+    <input type="text" id="addPhone" name="phone" required><br><br>
+    <button type="submit">Thêm Người Dùng</button>
+</form>
+<div id="userList">
+    <h2>Danh Sách Người Dùng</h2>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const addUserForm = document.getElementById('addUserForm');
+    addUserForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const formData = new FormData(addUserForm);
+        const userData = {
+            name: formData.get('name'),
+            email: formData.get('email'),
+            phone: formData.get('phone')
+        };
+        addNewUserToAPI(userData);
+    });
+    function addNewUserToAPI(userData) {
+        fetch('http://api.uduer.com/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(userData),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Không thể thêm người dùng mới');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Người dùng mới đã được thêm:', data);
+            alert('Người dùng mới đã được thêm thành công!');
+            updateUserList();
+        })
+        .catch(error => {
+            console.error('Có lỗi khi thêm người dùng mới:', error);
+            alert('Không thể thêm người dùng mới. Vui lòng thử lại sau.');
+        });
+    }
+    function updateUserList() {
+        const userList = document.getElementById('userList');
+        userList.innerHTML = '';
+
+        fetch('http://api.uduer.com/users')
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(user => {
+                const userItem = document.createElement('div');
+                userItem.innerHTML = `
+                    <p><strong>Họ và Tên:</strong> ${user.name}</p>
+                    <p><strong>Email:</strong> ${user.email}</p>
+                    <p><strong>Số Điện Thoại:</strong> ${user.phone}</p>
+                    <button onclick="updateUser('${user._id}')">Cập Nhật</button>
+                    <button onclick="deleteUser('${user._id}')">Xóa</button>
+                    <hr>
+                `;
+                userList.appendChild(userItem);
+            });
+        })
+        .catch(error => console.error('Có lỗi khi cập nhật danh sách người dùng:', error));
+    }
+    function updateUser(userId) {
+        alert('Chức năng cập nhật đang được phát triển!');
+    }
+    function deleteUser(userId) {
+        alert('Chức năng xóa đang được phát triển!');
+    }
+    updateUserList();
+});
+</script>
+</body>
+</html>
