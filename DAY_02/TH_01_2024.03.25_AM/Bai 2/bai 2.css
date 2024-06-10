@@ -1,0 +1,43 @@
+ .search-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end; 
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            padding: 5px;
+        }
+
+        .search-container input[type=text] {
+            border: none;
+            outline: none;
+            padding: 5px;
+            padding-left: 20px;
+            width: 100px; 
+        }
+
+        .search-container button {
+            background-color: transparent;
+            border: none;
+            color: #555;
+            cursor: pointer;
+            padding: 5px;
+            margin-left: auto; 
+        }
+        th,td,tr{
+            text-align: left;
+        }
+        .topics {
+            background-color: #16965a;
+            color: aliceblue;
+            padding: 10px;
+            border-radius: 5px;
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 16px;
+        }
+        a {
+            text-decoration: none;
+            color: rgb(240, 233, 233);
+        }
